@@ -16,6 +16,20 @@ struct Recipe {
     var mainInformation: MainInformation
     var ingredients: [Ingredient]
     var directions: [Direction]
+    
+    init(mainInformation: MainInformation, ingredients: [Ingredient], directions: [Direction]) {
+        self.mainInformation = mainInformation
+        self.ingredients = ingredients
+        self.directions = directions
+    }
+    
+    // Will be used later on for making empty recipes that the user can edit.
+    init() {
+        self.init(mainInformation: MainInformation(name: "", description: "", author: "", category: .breakfast),
+                      ingredients: [],
+                      directions: [])
+    }
+    
 }
 
 // Hold Main Data for Recipe
