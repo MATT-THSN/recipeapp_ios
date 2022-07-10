@@ -33,7 +33,16 @@ struct MainInformation {
 struct Ingredient {
     var name: String
     var quantity: Double
-    var unit: String // Ounces, Grams, Cups, Tablespoons, Teaspoons, None
+    var unit: Unit // Ounces, Grams, Cups, Tablespoons, Teaspoons, None
+
+    enum Unit: String, CaseIterable {
+        case oz = "Ounces"
+        case g = "Grams"
+        case cups = "Cups"
+        case tbs = "Tablespoons"
+        case tsp = "Teaspoons"
+        case none = "No units"
+    }
 }
 
 // Hold Direction(s) for Recipe
