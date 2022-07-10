@@ -47,6 +47,8 @@ struct Ingredient {
         case tbs = "Tablespoons"
         case tsp = "Teaspoons"
         case none = "No units"
+        
+        var singularName: String { String(rawValue.dropLast()) }
     }
 }
 
