@@ -10,8 +10,8 @@ import Foundation
 // Hold Recipe Information
 struct Recipe {
     var mainInformation: MainInformation
-    var ingredients: [String]
-    var directions: [String]
+    var ingredients: [Ingredient]
+    var directions: [Direction]
 }
 
 // Hold Main Data for Recipe
@@ -27,5 +27,18 @@ struct MainInformation {
         case dinner = "Dinner"
         case dessert = "Dessert"
     }
+}
+
+// Hold Ingredient Details
+struct Ingredient {
+    var name: String
+    var quantity: Double
+    var unit: String // Ounces, Grams, Cups, Tablespoons, Teaspoons, None
+}
+
+// Hold Direction(s) for Recipe
+struct Direction {
+    var description: String
+    var isOptional: Bool
 }
 
