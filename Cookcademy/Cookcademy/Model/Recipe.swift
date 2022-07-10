@@ -5,6 +5,11 @@
 //  Created by Matthew Thompson on 10/07/2022.
 //
 
+// *************************************************************************************************************************************
+// *  The Recipe model contains  custom structures that hold the recipe’s Ingredients, Directions, and some relevant MainInformation.  *
+// *************************************************************************************************************************************
+
+
 import Foundation
 
 // Hold Recipe Information
