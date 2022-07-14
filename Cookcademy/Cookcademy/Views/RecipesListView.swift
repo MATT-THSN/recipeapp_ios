@@ -9,8 +9,10 @@ import SwiftUI
 
 struct RecipiesListView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List {
+            //Recipes go here
+        }
+        .navigationTitle("All Recipes")
     }
 }
 
