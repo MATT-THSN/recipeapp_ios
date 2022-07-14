@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RecipiesListView: View {
+    @StateObject var recipeData = RecipeData()
+    
     var body: some View {
         List {
             //Recipes go here
