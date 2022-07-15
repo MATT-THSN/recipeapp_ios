@@ -17,7 +17,7 @@ struct RecipiesListView: View {
                 Text(recipe.mainInformation.name)
             }
         }
-        .navigationTitle("All Recipes")
+        .navigationTitle(navigationTitle)
     }
 }
 
@@ -25,6 +25,11 @@ extension RecipiesListView {
     // Give me all recipes
     var recipes: [Recipe] {
         recipeData.recipes
+    }
+    
+    // What title do we want to use?
+    var navigationTitle: String {
+        "All Recipes"
     }
 }
 
