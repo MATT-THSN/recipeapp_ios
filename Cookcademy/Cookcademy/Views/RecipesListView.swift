@@ -14,7 +14,8 @@ struct RecipiesListView: View {
         // Display list of recipe names
         List {
             ForEach(recipes) { recipe in
-                Text(recipe.mainInformation.name)
+                // Navigate to recipe details
+                NavigationLink(recipe.mainInformation.name, destination: RecipeDetailView(recipe: recipe))
             }
         }
         .navigationTitle(navigationTitle)
