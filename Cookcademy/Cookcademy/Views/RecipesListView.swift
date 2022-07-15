@@ -11,8 +11,11 @@ struct RecipiesListView: View {
     @StateObject var recipeData = RecipeData()
     
     var body: some View {
+        // Display list of recipe names
         List {
-            //Recipes go here
+            ForEach(recipeData.recipes) { recipe in
+                Text(recipe.mainInformation.name)
+            }
         }
         .navigationTitle("All Recipes")
     }
