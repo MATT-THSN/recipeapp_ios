@@ -37,6 +37,24 @@ struct RecipeDetailView: View {
                         Text(ingredient.description)
                     }
                 }
+                // Recipe directions displayed via a loop
+                Section(header: Text("Directions")) {
+                    ForEach(recipe.directions.indices, id: \.self) { index in
+                        // Store recipe.directions[index] in direction to make code more readable
+                        let direction = recipe.directions[index]
+                        HStack {
+                            // Display direction number
+                            Text("\(index + 1). ").bold()
+                            
+                            /*
+                                Check IF a direction is optional { Append optional text }
+                                Append direction description string
+                             */
+                            Text("\(direction.isOptional ? "(Optional) " : "")"
+                                 + "\(direction.description)")
+                        }
+                    }
+                }
             }
         }
         .navigationTitle(recipe.mainInformation.name)
