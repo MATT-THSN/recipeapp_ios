@@ -15,16 +15,28 @@ struct RecipeDetailView: View {
         VStack {
             // Display recipe information
             HStack {
+                // Author of recipe
                 Text("Author: \(recipe.mainInformation.author)")
                     .font(.subheadline)
                     .padding()
                 Spacer()
             }
             HStack {
+                // Description of recipe
                 Text(recipe.mainInformation.description)
                     .font(.subheadline)
                     .padding()
                 Spacer()
+            }
+            List {
+                // Recipe ingredients displayed via a loop
+                Section(header: Text("Ingredients")) {
+                    // \.self uses the entire recipe as the identifier
+                    ForEach(recipe.ingredients.indices, id: \.self) { index in
+                        let ingredient = recipe.ingredients[index]
+                        Text(ingredient.description)
+                    }
+                }
             }
         }
         .navigationTitle(recipe.mainInformation.name)
