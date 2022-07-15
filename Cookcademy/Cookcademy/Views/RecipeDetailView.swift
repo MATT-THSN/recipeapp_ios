@@ -11,6 +11,10 @@ struct RecipeDetailView: View {
     // Get a single recipe rather than an array of recipes
     let recipe: Recipe
     
+    // Store background and text colour to be used in view.
+    private let listBackgroundColor = AppColor.background
+    private let listTextColor = AppColor.foreground
+    
     var body: some View {
         VStack {
             // Display recipe information
@@ -35,8 +39,11 @@ struct RecipeDetailView: View {
                     ForEach(recipe.ingredients.indices, id: \.self) { index in
                         let ingredient = recipe.ingredients[index]
                         Text(ingredient.description)
+                            .foregroundColor(listTextColor)
                     }
                 }
+                .listRowBackground(listBackgroundColor)
+                
                 // Recipe directions displayed via a loop
                 Section(header: Text("Directions")) {
                     ForEach(recipe.directions.indices, id: \.self) { index in
@@ -53,8 +60,10 @@ struct RecipeDetailView: View {
                             Text("\(direction.isOptional ? "(Optional) " : "")"
                                  + "\(direction.description)")
                         }
+                        .foregroundColor(listTextColor)
                     }
                 }
+                .listRowBackground(listBackgroundColor)
             }
         }
         .navigationTitle(recipe.mainInformation.name)
