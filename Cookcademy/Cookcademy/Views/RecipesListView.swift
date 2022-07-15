@@ -23,6 +23,9 @@ struct RecipiesListView: View {
 
 struct RecipiesListView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipiesListView()
+        // NavigationView added to display the navigationTitle.
+        NavigationView {
+            RecipiesListView()
+        }
     }
 }
