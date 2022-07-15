@@ -8,5 +8,6 @@
 import Foundation
 
 class RecipeData: ObservableObject {
+    // We use @Published here so SwiftUI make display changes should recipes change
     @Published var recipes = Recipe.testRecipes
 }
