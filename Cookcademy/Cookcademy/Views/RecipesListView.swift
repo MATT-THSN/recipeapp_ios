@@ -10,6 +10,10 @@ import SwiftUI
 struct RecipiesListView: View {
     @StateObject var recipeData = RecipeData()
     
+    // Store background and text colour to be used in view.
+    private let listBackgroundColor = AppColor.background
+    private let listTextColor = AppColor.foreground
+    
     var body: some View {
         // Display list of recipe names
         List {
@@ -17,6 +21,9 @@ struct RecipiesListView: View {
                 // Navigate to recipe details
                 NavigationLink(recipe.mainInformation.name, destination: RecipeDetailView(recipe: recipe))
             }
+            // Set row and text colours
+            .listRowBackground(listBackgroundColor)
+            .foregroundColor(listTextColor)
         }
         .navigationTitle(navigationTitle)
     }
