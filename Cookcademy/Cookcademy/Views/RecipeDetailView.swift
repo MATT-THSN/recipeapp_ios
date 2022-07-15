@@ -8,13 +8,36 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
+    // Get a single recipe rather than an array of recipes
+    let recipe: Recipe
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            // Display recipe information
+            HStack {
+                Text("Author: \(recipe.mainInformation.author)")
+                    .font(.subheadline)
+                    .padding()
+                Spacer()
+            }
+            HStack {
+                Text(recipe.mainInformation.description)
+                    .font(.subheadline)
+                    .padding()
+                Spacer()
+            }
+        }
+        .navigationTitle(recipe.mainInformation.name)
     }
 }
 
 struct RecipeDetailView_Previews: PreviewProvider {
+    // Create a variable to store the first test recipe
+    @State static var recipeForPreview = Recipe.testRecipes[0]
     static var previews: some View {
-        RecipeDetailView()
+        NavigationView {
+            // Pass in recipeForPreview variable to generate a preview
+            RecipeDetailView(recipe: recipeForPreview)
+        }
     }
 }
