@@ -13,11 +13,18 @@ struct RecipiesListView: View {
     var body: some View {
         // Display list of recipe names
         List {
-            ForEach(recipeData.recipes) { recipe in
+            ForEach(recipes) { recipe in
                 Text(recipe.mainInformation.name)
             }
         }
         .navigationTitle("All Recipes")
+    }
+}
+
+extension RecipiesListView {
+    // Give me all recipes
+    var recipes: [Recipe] {
+        recipeData.recipes
     }
 }
 
