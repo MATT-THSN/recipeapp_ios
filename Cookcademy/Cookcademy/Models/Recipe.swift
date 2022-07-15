@@ -12,7 +12,8 @@
 import Foundation
 
 // Hold Recipe Information
-struct Recipe {
+struct Recipe: Identifiable {
+    var id = UUID()
     var mainInformation: MainInformation
     var ingredients: [Ingredient]
     var directions: [Direction]
