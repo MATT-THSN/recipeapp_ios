@@ -13,19 +13,21 @@ struct RecipeCategoryGridView: View {
     
     var body: some View {
         NavigationView {
-            // Display each food category
-            LazyVGrid(columns: [GridItem()], content: {
-                ForEach(MainInformation.Category.allCases, id: \.self) { category in
-                    ZStack {
-                        Image(category.rawValue)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                        Text(category.rawValue)
-                            .font(.title)
+            ScrollView {
+                // Display each food category in two columns
+                LazyVGrid(columns: [GridItem(), GridItem()], content: {
+                    ForEach(MainInformation.Category.allCases, id: \.self) { category in
+                        ZStack {
+                            Image(category.rawValue)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                            Text(category.rawValue)
+                                .font(.title)
+                        }
                     }
-                }
-            })
-            .navigationTitle("Categories")
+                })
+                .navigationTitle("Categories")
+            }
         }
     }
 }
