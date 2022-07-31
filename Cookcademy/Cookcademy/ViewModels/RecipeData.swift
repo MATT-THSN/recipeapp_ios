@@ -9,5 +9,15 @@ import Foundation
 
 class RecipeData: ObservableObject {
     // We use @Published here so SwiftUI make display changes should recipes change
-    @Published var recipes = Recipe.testRecipes
+  @Published var recipe = Recipe.testRecipes
+ 
+  func recipes(for category: MainInformation.Category) -> [Recipe] {
+    var filteredRecipes = [Recipe]()
+    for item in recipe {
+      if item.mainInformation.category == category {
+        filteredRecipes.append(item)
+      }
+    }
+    return filteredRecipes
+  }
 }
