@@ -9,7 +9,8 @@ import SwiftUI
 
 struct RecipeCategoryGridView: View {
     // Link to view model
-    private var recipeData = RecipeData()
+    // State Object so that SwiftUI knows to monitor this data to update the U.I if changes are made
+    @StateObject private var recipeData = RecipeData()
     
     var body: some View {
         let columns = [GridItem(), GridItem()]
@@ -19,7 +20,12 @@ struct RecipeCategoryGridView: View {
                 // Display each food category in two columns
                 LazyVGrid(columns: columns, content: {
                     ForEach(MainInformation.Category.allCases, id: \.self) { category in
-                        CategoryView(category: category)
+                        NavigationLink(
+                            destination: RecipiesListView(category: category)
+                                .environmentObject(recipeData),
+                            label: {
+                                CategoryView(category: category)
+                            })
                     }
                 })
                 .navigationTitle("Categories")
@@ -36,7 +42,7 @@ struct CategoryView: View {
             Image(category.rawValue)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .opacity(0.45)
+                .opacity(0.25)
             Text(category.rawValue)
                 .font(.title)
         }
