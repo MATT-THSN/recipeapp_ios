@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct RecipeCategoryGridView: View {
+    // Link to view model
+    private var recipeData = RecipeData()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            // Display each food category
+            LazyVGrid(columns: [GridItem()], content: {
+                ForEach(MainInformation.Category.allCases, id: \.self) { category in
+                    Text(category.rawValue)
+                        .font(.title)
+                }
+            })
+            .navigationTitle("Categories")
+        }
     }
 }
 
