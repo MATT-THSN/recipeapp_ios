@@ -16,8 +16,13 @@ struct RecipeCategoryGridView: View {
             // Display each food category
             LazyVGrid(columns: [GridItem()], content: {
                 ForEach(MainInformation.Category.allCases, id: \.self) { category in
-                    Text(category.rawValue)
-                        .font(.title)
+                    ZStack {
+                        Image(category.rawValue)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        Text(category.rawValue)
+                            .font(.title)
+                    }
                 }
             })
             .navigationTitle("Categories")
