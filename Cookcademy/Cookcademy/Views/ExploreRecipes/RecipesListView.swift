@@ -11,6 +11,10 @@ struct RecipiesListView: View {
     @EnvironmentObject private var recipeData: RecipeData
     let category: MainInformation.Category
     
+    // Should the sheet display?
+    @State private var isPresenting = false
+    @State private var newRecipe = Recipe()
+    
     // Store background and text colour to be used in view.
     private let listBackgroundColor = AppColor.background
     private let listTextColor = AppColor.foreground
@@ -27,6 +31,23 @@ struct RecipiesListView: View {
             .foregroundColor(listTextColor)
         }
         .navigationTitle(navigationTitle)
+        // Add a button to bring up the ModifyRecipeView (Sheet)
+        .toolbar(content: {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    isPresenting = true
+                }, label: {
+                    Image(systemName: "plus")
+                })
+            }
+        })
+        // If presenting, bring up the sheet
+        .sheet(isPresented: $isPresenting, content: {
+            NavigationView {
+                ModifyRecipeView(recipe: $newRecipe)
+                    .navigationTitle("Add a New Recipe")
+            }
+        })
     }
 }
 
