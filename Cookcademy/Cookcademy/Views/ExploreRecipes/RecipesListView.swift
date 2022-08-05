@@ -45,6 +45,21 @@ struct RecipiesListView: View {
         .sheet(isPresented: $isPresenting, content: {
             NavigationView {
                 ModifyRecipeView(recipe: $newRecipe)
+                    .toolbar(content: {
+                        ToolbarItem(placement: .cancellationAction) {
+                            // Hide sheet without saving
+                            Button("Dismiss") {
+                                isPresenting = false
+                            }
+                        }
+                        ToolbarItem(placement: .confirmationAction) {
+                            // Add new recipe info to array of recipes
+                            Button("Add") {
+                                recipeData.recipe.append(newRecipe)
+                                isPresenting = false
+                            }
+                        }
+                    })
                     .navigationTitle("Add a New Recipe")
             }
         })
