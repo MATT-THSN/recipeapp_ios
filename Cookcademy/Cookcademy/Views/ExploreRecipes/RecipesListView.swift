@@ -56,7 +56,7 @@ struct RecipiesListView: View {
                             // Add new recipe info to array of recipes
                             if newRecipe.isValid {
                                 Button("Add") {
-                                    recipeData.recipe.append(newRecipe)
+                                    recipeData.add(newRecipe)
                                     isPresenting = false
                                 }
                             }
