@@ -54,9 +54,11 @@ struct RecipiesListView: View {
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             // Add new recipe info to array of recipes
-                            Button("Add") {
-                                recipeData.recipe.append(newRecipe)
-                                isPresenting = false
+                            if newRecipe.isValid {
+                                Button("Add") {
+                                    recipeData.recipe.append(newRecipe)
+                                    isPresenting = false
+                                }
                             }
                         }
                     })
