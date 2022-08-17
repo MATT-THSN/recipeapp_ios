@@ -16,22 +16,27 @@ struct ModifyMainInformationView: View {
     var body: some View {
         Form {
             TextField("Recipe Name", text: $mainInformation.name)
+                .listRowBackground(listBackgroundColor)
             TextField("Author", text: $mainInformation.author)
+                .listRowBackground(listBackgroundColor)
             Section(header: Text("Description")) {
                 TextEditor(text: $mainInformation.description)
+                    .listRowBackground(listBackgroundColor)
             }
             Picker(selection: $mainInformation.category, label:
-                HStack {
-                    Text("Category")
-                    Spacer()
-                    Text(mainInformation.category.rawValue)
-                }, content: {
-                ForEach(MainInformation.Category.allCases, id: \.self) {
-                    Text($0.rawValue)
+                    HStack {
+                        Text("Category")
+                        Spacer()
+                        Text(mainInformation.category.rawValue)
+                    }) {
+                        ForEach(MainInformation.Category.allCases, id: \.self) { category in
+                        Text(category.rawValue)
+                    }
                 }
-            })
-            .pickerStyle(.menu)
-        }
+                .listRowBackground(listBackgroundColor)
+                .pickerStyle(MenuPickerStyle())
+            }
+        .foregroundColor(listTextColor)
     }
 }
 
