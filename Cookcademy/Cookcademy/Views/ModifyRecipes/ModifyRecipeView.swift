@@ -10,6 +10,8 @@ import SwiftUI
 struct ModifyRecipeView: View {
     @Binding var recipe: Recipe
     
+    @State private var selection = Selection.main
+    
     var body: some View {
         Button("Fill in the recipe with test data.") {
             recipe.mainInformation = MainInformation(name: "test",
@@ -24,6 +26,12 @@ struct ModifyRecipeView: View {
                                              quantity: 1.0,
                                              unit: .none)]
         }
+    }
+    
+    enum Selection {
+        case main
+        case ingredients
+        case directions
     }
 }
 
