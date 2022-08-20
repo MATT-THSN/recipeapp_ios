@@ -14,23 +14,25 @@ struct ModifyIngredientsView: View {
                                           unit: .none)
     
     var body: some View {
-        VStack {
-            let addIngredientView = ModifyIngredientView(ingredient: $newIngredient) { ingredient in
-                    ingredients.append(ingredient)
-                    newIngredient = Ingredient(name: "", quantity: 0.0, unit: .none)
-                  }
-            if ingredients.isEmpty {
-                Spacer()
-                NavigationLink("Add the first ingredient", destination: addIngredientView)
-                Spacer()
-            } else {
-                List {
-                    ForEach(ingredients.indices, id: \.self) { index in
-                        let ingredients = ingredients[index]
-                        Text(ingredients.description)
+        NavigationView {
+            VStack {
+                let addIngredientView = ModifyIngredientView(ingredient: $newIngredient) { ingredient in
+                        ingredients.append(ingredient)
+                        newIngredient = Ingredient(name: "", quantity: 0.0, unit: .none)
+                      }
+                if ingredients.isEmpty {
+                    Spacer()
+                    NavigationLink("Add the first ingredient", destination: addIngredientView)
+                    Spacer()
+                } else {
+                    List {
+                        ForEach(ingredients.indices, id: \.self) { index in
+                            let ingredients = ingredients[index]
+                            Text(ingredients.description)
+                        }
+                        NavigationLink("Add another ingredients", destination: addIngredientView)
+                            .buttonStyle(.plain)
                     }
-                    NavigationLink("Add another ingredients", destination: addIngredientView)
-                        .buttonStyle(.plain)
                 }
             }
         }
