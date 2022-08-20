@@ -19,7 +19,7 @@ struct ModifyIngredientsView: View {
                 let addIngredientView = ModifyIngredientView(ingredient: $newIngredient) { ingredient in
                         ingredients.append(ingredient)
                         newIngredient = Ingredient(name: "", quantity: 0.0, unit: .none)
-                      }
+                      }.navigationTitle("Add Ingredient")
                 if ingredients.isEmpty {
                     Spacer()
                     NavigationLink("Add the first ingredient", destination: addIngredientView)
@@ -32,7 +32,7 @@ struct ModifyIngredientsView: View {
                         }
                         NavigationLink("Add another ingredients", destination: addIngredientView)
                             .buttonStyle(.plain)
-                    }
+                    }//.navigationTitle("Ingredients")
                 }
             }
         }
