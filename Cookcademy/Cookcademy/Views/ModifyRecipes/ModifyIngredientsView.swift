@@ -11,6 +11,9 @@ struct ModifyIngredientsView: View {
     @Binding var ingredients: [Ingredient]
     @State var newIngredient = Ingredient()
     
+    private let listBackgroundColor = AppColor.background
+    private let listTextColor = AppColor.foreground
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -28,9 +31,13 @@ struct ModifyIngredientsView: View {
                             let ingredients = ingredients[index]
                             Text(ingredients.description)
                         }
+                        .listRowBackground(listBackgroundColor)
                         NavigationLink("Add another ingredients", destination: addIngredientView)
                             .buttonStyle(.plain)
-                    }//.navigationTitle("Ingredients")
+                            .listRowBackground(listBackgroundColor)
+                    }
+                    //.navigationTitle("Ingredients")
+                    .foregroundColor(listTextColor)
                 }
             }
         }
