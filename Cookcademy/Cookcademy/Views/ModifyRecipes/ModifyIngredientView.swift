@@ -10,6 +10,7 @@ import SwiftUI
 struct ModifyIngredientView: View {
     @Binding var ingredient: Ingredient
     let createAction: ((Ingredient) -> Void)
+    @Environment(\.presentationMode) private var mode
     
     var body: some View {
         VStack {
@@ -41,6 +42,7 @@ struct ModifyIngredientView: View {
                     Spacer()
                     Button("Save") {
                         createAction(ingredient)
+                        mode.wrappedValue.dismiss()
                     }
                     Spacer()
                 }
